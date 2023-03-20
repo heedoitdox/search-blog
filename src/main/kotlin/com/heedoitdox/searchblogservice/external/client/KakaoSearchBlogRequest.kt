@@ -5,4 +5,8 @@ data class KakaoSearchBlogRequest(
     val page: Int?,
     val size: Int?,
     val sort: String?
-)
+) {
+    init {
+        require(query.isNotBlank()) { "query is not black." }
+    }
+}
