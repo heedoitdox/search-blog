@@ -9,8 +9,12 @@ spring:
     username: sa
     password:
 
+kakao:
+  rest-api-key: 0c9e80288d005feed95d073439ac743e
+
 logging:
   level:
+    com.heedoitdox.searchblogservice.external: DEBUG
     org:
       hibernate:
         SQL: DEBUG
