@@ -4,6 +4,7 @@ data class KakaoSearchBlogResponse(
     val meta: Meta,
     val documents: List<Document>
 ) {
+    // TODO: snake_case parsing
     data class Meta(
         val totalCount: Int,
         val pageableCount: Int,

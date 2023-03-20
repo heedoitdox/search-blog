@@ -1,7 +1,6 @@
 package com.heedoitdox.searchblogservice.application
 
 import com.heedoitdox.searchblogservice.external.client.KakaoClient
-import com.heedoitdox.searchblogservice.external.client.KakaoSearchBlogResponse
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.PageRequest
@@ -14,10 +13,12 @@ import org.springframework.transaction.annotation.Transactional
 class SearchBlogService(
     private val kakaoClient: KakaoClient
 ) {
-    fun search(request: SearchBlogRequest): Page<KakaoSearchBlogResponse.Document> {
-        val response = kakaoClient.searchBlog(request.toKakaoSearchBlogRequest())
-        val pageable: Pageable = PageRequest.of(request.page!!, request.size!!)
+    fun search(request: SearchBlogRequest): Page<SearchBlogResponse> {
+        val clientResponse = kakaoClient.searchBlog(request.toKakaoSearchBlogRequest())
 
-        return PageImpl(response.documents, pageable, response.meta.totalCount.toLong())
+        val pageable: Pageable = PageRequest.of(request.page!!, request.size!!)
+        val response = clientResponse.documents.map(SearchBlogResponse::from)
+
+        return PageImpl(response, pageable, clientResponse.meta.totalCount.toLong())
     }
 }
