@@ -1,10 +1,10 @@
 package com.heedoitdox.searchblogservice.api
 
 import com.heedoitdox.searchblogservice.application.SearchBlogRequest
+import com.heedoitdox.searchblogservice.application.SearchBlogResponse
 import com.heedoitdox.searchblogservice.application.SearchBlogService
 import com.heedoitdox.searchblogservice.exception.ErrorCode.INVALID_PARAMETER
 import com.heedoitdox.searchblogservice.exception.RequestParamBindException
-import com.heedoitdox.searchblogservice.external.client.KakaoSearchBlogResponse
 import org.springframework.data.domain.Page
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.BindingResult
@@ -25,7 +25,7 @@ class SearchBlogController(
         @Valid @ModelAttribute
         request: SearchBlogRequest,
         result: BindingResult
-    ): ResponseEntity<Page<KakaoSearchBlogResponse.Document>> {
+    ): ResponseEntity<Page<SearchBlogResponse>> {
         if (result.hasErrors()) {
             throw RequestParamBindException(INVALID_PARAMETER, result.fieldErrors)
         }
