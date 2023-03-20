@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/search")
@@ -18,7 +19,8 @@ class SearchBlogController(
 
     @GetMapping("/blog")
     fun search(
-        @ModelAttribute request: SearchBlogRequest
+        @Valid @ModelAttribute
+        request: SearchBlogRequest
     ): ResponseEntity<Page<KakaoSearchBlogResponse.Document>> {
         return ResponseEntity.ok().body(searchBlogService.search(request))
     }
