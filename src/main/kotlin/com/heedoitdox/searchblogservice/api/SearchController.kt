@@ -1,8 +1,9 @@
 package com.heedoitdox.searchblogservice.api
 
-import com.heedoitdox.searchblogservice.application.SearchBlogRequest
-import com.heedoitdox.searchblogservice.application.SearchBlogResponse
-import com.heedoitdox.searchblogservice.application.SearchBlogService
+import com.heedoitdox.searchblogservice.application.SearchKeywordResponse
+import com.heedoitdox.searchblogservice.application.SearchRequest
+import com.heedoitdox.searchblogservice.application.SearchResponse
+import com.heedoitdox.searchblogservice.application.SearchService
 import com.heedoitdox.searchblogservice.exception.ErrorCode.INVALID_PARAMETER
 import com.heedoitdox.searchblogservice.exception.RequestParamBindException
 import org.springframework.data.domain.Page
@@ -16,20 +17,27 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping("/search")
-class SearchBlogController(
-    private val searchBlogService: SearchBlogService
+class SearchController(
+    private val searchBlogService: SearchService
 ) {
 
     @GetMapping("/blog")
     fun search(
         @Valid @ModelAttribute
-        request: SearchBlogRequest,
+        request: SearchRequest,
         result: BindingResult
-    ): ResponseEntity<Page<SearchBlogResponse>> {
+    ): ResponseEntity<Page<SearchResponse>> {
         if (result.hasErrors()) {
             throw RequestParamBindException(INVALID_PARAMETER, result.fieldErrors)
         }
         val response = searchBlogService.search(request)
+
+        return ResponseEntity.ok().body(response)
+    }
+
+    @GetMapping("/hot-keywords")
+    fun getSearchKeywordsTop10(): ResponseEntity<SearchKeywordResponse> {
+        val response = searchBlogService.getSearchKeywordsTop10()
 
         return ResponseEntity.ok().body(response)
     }

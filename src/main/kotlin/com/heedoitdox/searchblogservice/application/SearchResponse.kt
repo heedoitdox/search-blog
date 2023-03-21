@@ -2,7 +2,7 @@ package com.heedoitdox.searchblogservice.application
 
 import com.heedoitdox.searchblogservice.external.client.KakaoSearchBlogResponse
 
-data class SearchBlogResponse(
+data class SearchResponse(
     val title: String,
     val contents: String,
     val url: String,
@@ -11,8 +11,8 @@ data class SearchBlogResponse(
     val datetime: String
 ) {
     companion object {
-        fun from(clientResponse: KakaoSearchBlogResponse.Document): SearchBlogResponse = with(clientResponse) {
-            SearchBlogResponse(title, contents, url, blogname, thumbnail, datetime)
+        fun from(clientResponse: KakaoSearchBlogResponse.Document): SearchResponse = with(clientResponse) {
+            SearchResponse(title, contents, url, blogname, thumbnail, datetime)
         }
     }
 }

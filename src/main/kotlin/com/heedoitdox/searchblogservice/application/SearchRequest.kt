@@ -6,17 +6,25 @@ import javax.validation.constraints.Min
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
-data class SearchBlogRequest(
+data class SearchRequest(
     @field:NotNull @field:NotBlank
-    val query: String,
+    var query: String,
     @field:Min(1)
     @field:Max(50)
-    val page: Int? = 1,
+    val page: Int? = DEFAULT_PAGE,
     @field:Min(1)
     @field:Max(50)
-    val size: Int? = 10,
+    val size: Int? = DEFAULT_SIZE,
     val sort: String?
 ) {
-    fun toKakaoSearchBlogRequest(): KakaoSearchBlogRequest =
-        KakaoSearchBlogRequest(query, page, size, sort)
+    fun queryTrim() {
+        this.query = query.trim()
+    }
+
+    fun toKakaoSearchBlogRequest(): KakaoSearchBlogRequest = KakaoSearchBlogRequest(query, page, size, sort)
+
+    companion object {
+        private const val DEFAULT_PAGE = 1
+        private const val DEFAULT_SIZE = 10
+    }
 }
