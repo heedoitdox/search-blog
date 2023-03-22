@@ -4,14 +4,8 @@
 :toclevels: 1
 :sectlinks:
 
-== search-blog API
+= 블로그 검색 / 인기 검색어 조회
 
-=== <검색어 조회>
-==== /api/search/blog
+include::search-blog.adoc[]
 
-operation::get-search[snippets='http-request,http-response,request-parameters,response-fields']
-
-=== <인기 TOP10 검색어 조회>
-==== /api/search/hot-keywords
-
-operation::get-hot-keywords[snippets='http-request,http-response,response-fields']
+include::lookup-hot-keywords.adoc[]

@@ -1,0 +1,4 @@
+= <검색어 조회>
+== /api/search/blog
+
+operation::get-search[snippets='http-request,http-response,request-parameters,response-fields']

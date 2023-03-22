@@ -1,0 +1,4 @@
+= <인기 TOP10 검색어 조회>
+== /api/search/hot-keywords
+
+operation::get-hot-keywords[snippets='http-request,http-response,response-fields']

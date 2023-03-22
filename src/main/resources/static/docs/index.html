@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>search-blog API</title>
+<title>블로그 검색 / 인기 검색어 조회</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -438,23 +438,33 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
+<h1>블로그 검색 / 인기 검색어 조회</h1>
+<div class="details">
+<span id="revnumber">version 0.0.1-SNAPSHOT</span>
+</div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
+<ul class="sectlevel0">
+<li><a href="#_검색어_조회">&lt;검색어 조회&gt;</a>
 <ul class="sectlevel1">
-<li><a href="#_search_blog_api">search-blog API</a></li>
+<li><a href="#_apisearchblog">/api/search/blog</a></li>
+</ul>
+</li>
+<li><a href="#_인기_top10_검색어_조회">&lt;인기 TOP10 검색어 조회&gt;</a>
+<ul class="sectlevel1">
+<li><a href="#_apisearchhot_keywords">/api/search/hot-keywords</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div id="content">
+<h1 id="_검색어_조회" class="sect0"><a class="link" href="#_검색어_조회">&lt;검색어 조회&gt;</a></h1>
 <div class="sect1">
-<h2 id="_search_blog_api"><a class="link" href="#_search_blog_api">search-blog API</a></h2>
+<h2 id="_apisearchblog"><a class="link" href="#_apisearchblog">/api/search/blog</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_검색어_조회"><a class="link" href="#_검색어_조회">&lt;검색어 조회&gt;</a></h3>
-<div class="sect3">
-<h4 id="_apisearchblog"><a class="link" href="#_apisearchblog">/api/search/blog</a></h4>
-<div class="sect4">
-<h5 id="_apisearchblog_http_request"><a class="link" href="#_apisearchblog_http_request">HTTP request</a></h5>
+<h3 id="_apisearchblog_http_request"><a class="link" href="#_apisearchblog_http_request">HTTP request</a></h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/search/blog?query=%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8+3.0&amp;page=1&amp;size=10&amp;sort=accuracy HTTP/1.1
@@ -462,8 +472,8 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_apisearchblog_http_response"><a class="link" href="#_apisearchblog_http_response">HTTP response</a></h5>
+<div class="sect2">
+<h3 id="_apisearchblog_http_response"><a class="link" href="#_apisearchblog_http_response">HTTP response</a></h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
@@ -496,20 +506,20 @@ Content-Length: 1251
   "totalElements" : 200,
   "first" : false,
   "numberOfElements" : 1,
-  "size" : 10,
-  "number" : 1,
   "sort" : {
     "sorted" : false,
     "unsorted" : true,
     "empty" : true
   },
+  "size" : 10,
+  "number" : 1,
   "empty" : false
 }</code></pre>
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_apisearchblog_request_parameters"><a class="link" href="#_apisearchblog_request_parameters">Request parameters</a></h5>
+<div class="sect2">
+<h3 id="_apisearchblog_request_parameters"><a class="link" href="#_apisearchblog_request_parameters">Request parameters</a></h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -541,8 +551,8 @@ Content-Length: 1251
 </tbody>
 </table>
 </div>
-<div class="sect4">
-<h5 id="_apisearchblog_response_fields"><a class="link" href="#_apisearchblog_response_fields">Response fields</a></h5>
+<div class="sect2">
+<h3 id="_apisearchblog_response_fields"><a class="link" href="#_apisearchblog_response_fields">Response fields</a></h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -707,12 +717,12 @@ Content-Length: 1251
 </div>
 </div>
 </div>
+<h1 id="_인기_top10_검색어_조회" class="sect0"><a class="link" href="#_인기_top10_검색어_조회">&lt;인기 TOP10 검색어 조회&gt;</a></h1>
+<div class="sect1">
+<h2 id="_apisearchhot_keywords"><a class="link" href="#_apisearchhot_keywords">/api/search/hot-keywords</a></h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="_인기_top10_검색어_조회"><a class="link" href="#_인기_top10_검색어_조회">&lt;인기 TOP10 검색어 조회&gt;</a></h3>
-<div class="sect3">
-<h4 id="_apisearchhot_keywords"><a class="link" href="#_apisearchhot_keywords">/api/search/hot-keywords</a></h4>
-<div class="sect4">
-<h5 id="_apisearchhot_keywords_http_request"><a class="link" href="#_apisearchhot_keywords_http_request">HTTP request</a></h5>
+<h3 id="_apisearchhot_keywords_http_request"><a class="link" href="#_apisearchhot_keywords_http_request">HTTP request</a></h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/search/hot-keywords HTTP/1.1
@@ -720,8 +730,8 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_apisearchhot_keywords_http_response"><a class="link" href="#_apisearchhot_keywords_http_response">HTTP response</a></h5>
+<div class="sect2">
+<h3 id="_apisearchhot_keywords_http_response"><a class="link" href="#_apisearchhot_keywords_http_response">HTTP response</a></h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
@@ -774,8 +784,8 @@ Content-Length: 822
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_apisearchhot_keywords_response_fields"><a class="link" href="#_apisearchhot_keywords_response_fields">Response fields</a></h5>
+<div class="sect2">
+<h3 id="_apisearchhot_keywords_response_fields"><a class="link" href="#_apisearchhot_keywords_response_fields">Response fields</a></h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -816,12 +826,10 @@ Content-Length: 822
 </div>
 </div>
 </div>
-</div>
-</div>
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2023-03-22 21:15:54 +0900
+Last updated 2023-03-22 22:04:26 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
