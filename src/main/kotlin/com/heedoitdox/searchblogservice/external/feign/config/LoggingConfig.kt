@@ -1,4 +1,4 @@
-package com.heedoitdox.searchblogservice.external.config
+package com.heedoitdox.searchblogservice.external.feign.config
 
 import feign.Logger
 import org.springframework.context.annotation.Bean

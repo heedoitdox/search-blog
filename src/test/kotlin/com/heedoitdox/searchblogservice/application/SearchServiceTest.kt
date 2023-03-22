@@ -6,7 +6,7 @@ import com.heedoitdox.searchblogservice.domain.createKakaoResponseMeta
 import com.heedoitdox.searchblogservice.domain.createKakaoSearchBlogResponse
 import com.heedoitdox.searchblogservice.domain.createSearchKeyword
 import com.heedoitdox.searchblogservice.domain.createSearchRequest
-import com.heedoitdox.searchblogservice.external.client.KakaoClient
+import com.heedoitdox.searchblogservice.external.feign.client.KakaoClient
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.collections.shouldHaveSize
 import io.mockk.every

@@ -1,6 +1,8 @@
 package com.heedoitdox.searchblogservice.exception
 
-import com.heedoitdox.searchblogservice.external.exception.KakaoClientHandledException
+import com.heedoitdox.searchblogservice.config.Slf4j
+import com.heedoitdox.searchblogservice.config.Slf4j.Companion.log
+import com.heedoitdox.searchblogservice.external.feign.exception.KakaoClientHandledException
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 import org.springframework.web.context.request.WebRequest
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
 
+@Slf4j
 @RestControllerAdvice
 class ExceptionHandler : ResponseEntityExceptionHandler() {
 
@@ -20,7 +23,7 @@ class ExceptionHandler : ResponseEntityExceptionHandler() {
         status: HttpStatus,
         request: WebRequest
     ): ResponseEntity<Any> {
-        logger.error("message", ex)
+        log.error("message", ex)
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
             ErrorResponse(
                 code = status.name,
@@ -31,7 +34,7 @@ class ExceptionHandler : ResponseEntityExceptionHandler() {
 
     @ExceptionHandler(IllegalArgumentException::class, IllegalStateException::class)
     fun handleBadRequestException(ex: RuntimeException): ResponseEntity<ErrorResponse> {
-        logger.error("message", ex)
+        log.error("message", ex)
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
             .body(
                 ErrorResponse(
@@ -43,7 +46,7 @@ class ExceptionHandler : ResponseEntityExceptionHandler() {
 
     @ExceptionHandler(Exception::class)
     fun handleGlobalException(ex: Exception): ResponseEntity<ErrorResponse> {
-        logger.error("message", ex)
+        log.error("message", ex)
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
             .body(
                 ErrorResponse(
@@ -55,7 +58,7 @@ class ExceptionHandler : ResponseEntityExceptionHandler() {
 
     @ExceptionHandler(KakaoClientHandledException::class)
     fun handleKakaoClientHandledException(ex: KakaoClientHandledException): ResponseEntity<ErrorResponse> {
-        logger.error("message", ex)
+        log.error("message", ex)
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
             .body(
                 ErrorResponse(
@@ -67,14 +70,15 @@ class ExceptionHandler : ResponseEntityExceptionHandler() {
 
     @ExceptionHandler(RequestParamBindException::class)
     fun handleRequestParamBindException(ex: RequestParamBindException): ResponseEntity<ErrorResponse> {
-        logger.error("message", ex)
+        log.error("message", ex)
+        ex.errorCode
         return ResponseEntity.status(ex.errorCode.status)
             .body(makeErrorResponse(ex.errors, ex.errorCode))
     }
 
     private fun makeErrorResponse(errors: List<FieldError>, errorCode: ErrorCode): ErrorResponse {
         return ErrorResponse(
-            code = errorCode.name,
+            code = errorCode.code,
             message = errorCode.message,
             errors = errors.map(ValidationError::of)
         )

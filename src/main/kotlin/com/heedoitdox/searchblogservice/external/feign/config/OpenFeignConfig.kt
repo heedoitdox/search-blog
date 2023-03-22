@@ -1,6 +1,6 @@
-package com.heedoitdox.searchblogservice.external.config
+package com.heedoitdox.searchblogservice.external.feign.config
 
-import com.heedoitdox.searchblogservice.external.exception.KakaoClientErrorDecoder
+import com.heedoitdox.searchblogservice.external.feign.exception.KakaoClientErrorDecoder
 import feign.RequestInterceptor
 import feign.RequestTemplate
 import feign.codec.ErrorDecoder

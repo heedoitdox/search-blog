@@ -1,4 +1,4 @@
-package com.heedoitdox.searchblogservice.external.client
+package com.heedoitdox.searchblogservice.external.feign.client
 
 data class KakaoSearchBlogRequest(
     val query: String,

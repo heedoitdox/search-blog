@@ -1,7 +1,7 @@
 package com.heedoitdox.searchblogservice.domain
 
 import com.heedoitdox.searchblogservice.application.SearchRequest
-import com.heedoitdox.searchblogservice.external.client.KakaoSearchBlogResponse
+import com.heedoitdox.searchblogservice.external.feign.client.KakaoSearchBlogResponse
 
 private const val DEFAULT_NUMBER_OF_SEARCH = 1L
 private const val DEFAULT_KEYWORD = "김밥"

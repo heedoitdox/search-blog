@@ -4,8 +4,8 @@ import com.heedoitdox.searchblogservice.application.SearchKeywordResponse
 import com.heedoitdox.searchblogservice.application.SearchRequest
 import com.heedoitdox.searchblogservice.application.SearchResponse
 import com.heedoitdox.searchblogservice.application.SearchService
-import com.heedoitdox.searchblogservice.exception.ErrorCode.INVALID_PARAMETER
 import com.heedoitdox.searchblogservice.exception.RequestParamBindException
+import com.heedoitdox.searchblogservice.exception.SearchError.INVALID_PARAMETER
 import org.springframework.data.domain.Page
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.BindingResult

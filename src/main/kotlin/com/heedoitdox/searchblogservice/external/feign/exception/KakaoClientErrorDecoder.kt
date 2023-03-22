@@ -1,4 +1,4 @@
-package com.heedoitdox.searchblogservice.external.exception
+package com.heedoitdox.searchblogservice.external.feign.exception
 
 import feign.Response
 import feign.codec.ErrorDecoder

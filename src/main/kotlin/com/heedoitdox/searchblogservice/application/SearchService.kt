@@ -2,7 +2,7 @@ package com.heedoitdox.searchblogservice.application
 
 import com.heedoitdox.searchblogservice.domain.SearchKeyword
 import com.heedoitdox.searchblogservice.domain.SearchKeywordRepository
-import com.heedoitdox.searchblogservice.external.client.KakaoClient
+import com.heedoitdox.searchblogservice.external.feign.client.KakaoClient
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.PageRequest

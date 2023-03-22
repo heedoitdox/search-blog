@@ -1,6 +1,6 @@
 package com.heedoitdox.searchblogservice.application
 
-import com.heedoitdox.searchblogservice.external.client.KakaoSearchBlogResponse
+import com.heedoitdox.searchblogservice.external.feign.client.KakaoSearchBlogResponse
 
 data class SearchResponse(
     val title: String,

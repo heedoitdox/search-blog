@@ -1,6 +1,6 @@
 package com.heedoitdox.searchblogservice.application
 
-import com.heedoitdox.searchblogservice.external.client.KakaoSearchBlogRequest
+import com.heedoitdox.searchblogservice.external.feign.client.KakaoSearchBlogRequest
 import javax.validation.constraints.Max
 import javax.validation.constraints.Min
 import javax.validation.constraints.NotBlank
