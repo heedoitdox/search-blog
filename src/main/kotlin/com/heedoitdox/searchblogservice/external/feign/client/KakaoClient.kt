@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping
 
 @FeignClient(
     name = "search-blog-api",
-    url = "https://dapi.kakao.com",
+    url = "\${application.feign-url.search-blog-api.kakao}",
     configuration = [OpenFeignConfig::class]
 )
 interface KakaoClient {

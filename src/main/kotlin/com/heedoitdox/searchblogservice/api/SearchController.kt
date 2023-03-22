@@ -4,8 +4,8 @@ import com.heedoitdox.searchblogservice.application.SearchKeywordResponse
 import com.heedoitdox.searchblogservice.application.SearchRequest
 import com.heedoitdox.searchblogservice.application.SearchResponse
 import com.heedoitdox.searchblogservice.application.SearchService
+import com.heedoitdox.searchblogservice.exception.CommonErrorCode.INVALID_REQUEST_PARAMETERS
 import com.heedoitdox.searchblogservice.exception.RequestParamBindException
-import com.heedoitdox.searchblogservice.exception.SearchError.INVALID_PARAMETER
 import org.springframework.data.domain.Page
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.BindingResult
@@ -28,7 +28,7 @@ class SearchController(
         result: BindingResult
     ): ResponseEntity<Page<SearchResponse>> {
         if (result.hasErrors()) {
-            throw RequestParamBindException(INVALID_PARAMETER, result.fieldErrors)
+            throw RequestParamBindException(INVALID_REQUEST_PARAMETERS, result.fieldErrors)
         }
         val response = searchBlogService.search(request)
 

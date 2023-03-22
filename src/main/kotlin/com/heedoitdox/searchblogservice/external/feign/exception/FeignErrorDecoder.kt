@@ -3,10 +3,8 @@ package com.heedoitdox.searchblogservice.external.feign.exception
 import feign.Response
 import feign.codec.ErrorDecoder
 
-class KakaoClientErrorDecoder() : ErrorDecoder {
+class FeignErrorDecoder() : ErrorDecoder {
     override fun decode(methodKey: String, response: Response): Exception {
-        throw KakaoClientHandledException()
+        return ErrorDecoder.Default().decode(methodKey, response)
     }
-
-    // TODO: https://www.baeldung.com/feign-retrieve-original-message
 }

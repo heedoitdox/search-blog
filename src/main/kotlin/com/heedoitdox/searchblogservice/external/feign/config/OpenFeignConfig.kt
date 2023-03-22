@@ -1,6 +1,6 @@
 package com.heedoitdox.searchblogservice.external.feign.config
 
-import com.heedoitdox.searchblogservice.external.feign.exception.KakaoClientErrorDecoder
+import com.heedoitdox.searchblogservice.external.feign.exception.FeignErrorDecoder
 import feign.RequestInterceptor
 import feign.RequestTemplate
 import feign.codec.ErrorDecoder
@@ -22,6 +22,6 @@ class OpenFeignConfig {
 
     @Bean
     fun errorDecoder(): ErrorDecoder {
-        return KakaoClientErrorDecoder()
+        return FeignErrorDecoder()
     }
 }

@@ -11,13 +11,17 @@ spring:
   jpa:
     database: h2
     database-platform: org.hibernate.dialect.H2Dialect
-
     hibernate:
       ddl-auto: create
     show-sql: true
     properties:
       hibernate:
         format_sql: true
+
+application:
+  feign-url:
+    search-blog-api:
+      kakao: https://dapi.kakao.com
 
 kakao:
   rest-api-key: 0c9e80288d005feed95d073439ac743e
