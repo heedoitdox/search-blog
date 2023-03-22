@@ -3,7 +3,7 @@ package com.heedoitdox.searchblogservice.external.feign.exception
 import feign.Response
 import feign.codec.ErrorDecoder
 
-class KakaoClientErrorDecoder : ErrorDecoder {
+class KakaoClientErrorDecoder() : ErrorDecoder {
     override fun decode(methodKey: String, response: Response): Exception {
         throw KakaoClientHandledException()
     }

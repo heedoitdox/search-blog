@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController
 import javax.validation.Valid
 
 @RestController
-@RequestMapping("/search")
+@RequestMapping("/api/search")
 class SearchController(
     private val searchBlogService: SearchService
 ) {

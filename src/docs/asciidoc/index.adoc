@@ -1,0 +1,15 @@
+:doctype: book
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 1
+:sectlinks:
+
+== search-blog API
+
+=== <검색어 조회>
+
+operation::get-search[snippets='http-request,http-response,request-parameters,response-fields']
+
+=== <인기 TOP10 검색어 조회>
+
+operation::get-hot-keywords[snippets='http-request,http-response,response-fields']
